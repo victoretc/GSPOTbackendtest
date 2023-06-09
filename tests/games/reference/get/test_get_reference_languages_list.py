@@ -3,7 +3,7 @@ import requests
 
 from tests.games.constants import BASE_URL, GET_REFERENCE_LANGUAGES_LIST_URL
 from source.base.validator import ResponseValidator
-from source.schemas.laguage_schama import Language
+from source.schemas.laguage_schema import Language
 
 
 @allure.story('Проверка успешного ответа [200] при запросе списка языков.')

@@ -18,8 +18,11 @@ class ResponseValidator:
                     self.parsed_object = parsed_object
             else:
                 schema.parse_obj(self.json_response)
-        except ValidationError:
-            raise AttributeError("Could not map received object to pydantic schema")
+        except ValidationError as error:
+            print(error.json())
+            raise AssertionError(
+                "Could not map received object to pydantic schema"
+            )
 
     def assert_status_code(self, status_code: int):
         assert self.status_code == status_code, GlobalError.WRONG_STATUS_CODE.value
