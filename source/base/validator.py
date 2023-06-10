@@ -25,9 +25,6 @@ class ResponseValidator:
         assert self.status_code == status_code, GlobalError.WRONG_STATUS_CODE.value
         return self
 
-    def get_parsed_obj(self):
-        return self.json_response
-
     def __str__(self):
         return \
             f"\nStatus code: {self.status_code} \n" \
