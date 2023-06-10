@@ -2,26 +2,35 @@
 BASE_URL = "https://games.alpha.g-spot.website/api/v1/"
 
 """Community"""
-# comments
-# review
+# GET
 
 """Core"""
-# dlc
-# product
-# products
-# system_requirement
-#
+# GET
+
+# POST
+
+# PUT
+
+# DELETE
+
+# PATCH
+
 
 """Reference"""
-# genre
-GENRE_LIST_URL = 'reference/genre/?limit=<integer>&offset=<integer>'
 
-# languages
-LANGUAGES_LIST_URL = 'reference/languages/?limit=<integer>&offset=<integer>'
-LANGUAGES_URL = 'reference/languages/'
+# GET
+GET_REFERENCE_GENRE_LIST_URL = 'reference/genre/?limit=<integer>&offset=<integer>'
+GET_REFERENCE_LANGUAGES_LIST_URL = 'reference/languages/?limit=<integer>&offset=<integer>'
 
-# product_languages
+# POST
 
-# subgenre
+# PUT
+
+# DELETE
+
+# PATCH
+
 
 """Utils"""
+
+# GET

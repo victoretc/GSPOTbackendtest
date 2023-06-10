@@ -2,6 +2,6 @@ from typing import List
 from pydantic import BaseModel, Field
 
 
-class Genre(BaseModel):
+class Language(BaseModel):
     id: int
     name: str
