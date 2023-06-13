@@ -1,6 +1,5 @@
 from faker import Faker
 
-
 class Generator:
 
     def __init__(self, lang=None):
