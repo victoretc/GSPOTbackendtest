@@ -2,7 +2,6 @@ import allure
 import requests
 
 from requests import Response
-from requests.auth import HTTPBasicAuth
 from typing import Dict, Optional, Any, Tuple
 
 
@@ -96,7 +95,7 @@ class Requests:
             params: Optional[Dict[str, Any]] = None,
             headers: Optional[Dict[str, str]] = None,
             cookies: Optional[Dict[str, str]] = None,
-            auth: Optional[HTTPBasicAuth] = None
+            auth: Optional[Tuple[str, str]] = None
     ) -> Response:
         return requests.delete(
             url=url,
@@ -107,4 +106,3 @@ class Requests:
             cookies=cookies,
             auth=auth,
         )
-

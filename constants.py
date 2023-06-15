@@ -1,3 +1,3 @@
 login = 'tester'
 password = 'tester'
-base = (login, password)
+tester_auth = (login, password)
