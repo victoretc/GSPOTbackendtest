@@ -22,7 +22,7 @@ class ResponseValidator:
             raise AttributeError("Could not map received object to pydantic schema")
 
     def assert_status_code(self, status_code: int):
-        assert self.status_code == status_code, GlobalError.WRONG_STATUS_CODE.value
+        assert self.status_code == status_code, GlobalError.WRONG_STATUS_CODE
         return self
 
     def __str__(self):
