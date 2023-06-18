@@ -1,9 +1,12 @@
+import allure
 from faker import Faker
 
 
 class Generator:
+
     @staticmethod
-    def object(model, lang=None, seed=None, include=None, exclude=None, **field_values):
+    @allure.step(f'Generating data based on json model.')
+    def object(model=None, lang=None, seed=None, include=None, exclude=None, **field_values):
         Faker.seed(seed)
         fake = Faker(lang)
         data = {}
@@ -17,6 +20,6 @@ class Generator:
             else:
                 if key == 'id':
                     data[key] = fake.random_digit_not_null()
-                elif key == "name":
+                elif key == 'name':
                     data[key] = fake.word()
         return data
