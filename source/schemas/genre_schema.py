@@ -1,14 +1,7 @@
-from pydantic import BaseModel, StrictInt, StrictStr
-
-from source.base.generator import Generator
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 
 class Genre(BaseModel):
-    id: StrictInt = None
-    name: StrictStr = ...
-
-    @staticmethod
-    def random(name=None, lang=None):
-        if name is None:
-            name = Generator(lang).get_word()
-        return Genre(name=name)
+    id: Optional[StrictInt] = Field(None, title='ID')
+    name: StrictStr = Field(..., title='Name', min_length=1, max_length=100)

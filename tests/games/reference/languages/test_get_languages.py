@@ -13,4 +13,3 @@ def test_get_languages_list():
     result = ResponseValidator(response)
     result.assert_status_code(200)
     result.validate(Language)
-    print(result.json_response)
