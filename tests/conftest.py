@@ -1,11 +1,8 @@
 import pytest
-import requests
-from requests.auth import HTTPBasicAuth
 
 
-def _delete_created_data(base_ulr, data_url, id_data):
-    url_delete = base_ulr + data_url + str(id_data)
-    response_delete = requests.delete(url=url_delete, auth=HTTPBasicAuth(username="tester", password="tester"))
+def _delete_created_data(api, id_data):
+    response_delete = api(id_data=id_data)
     assert response_delete.status_code == 204
 
 

@@ -1,18 +1,7 @@
-from pydantic import BaseModel, Field, validator
-from source.base.generator import Generator
-from source.enums.global_enums import GlobalError
+from typing import Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 
 class Language(BaseModel):
-    id: int
-    name: str = Field(...)
-
-    @validator('name')
-    def validate_name_length(cls, value):
-        if 1 > len(value) or len(value) > 100:
-            raise ValueError(GlobalError.INVALID_STRING_LENGTH.value)
-        return value
-
-
-class CreateLanguage(BaseModel):
-    name: str = Field(default=Generator().get_language())
+    id: Optional[StrictInt] = Field(None, title='ID')
+    name: StrictStr = Field(..., title='Name', min_length=1, max_length=100)
