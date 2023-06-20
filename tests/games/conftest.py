@@ -7,12 +7,19 @@ from source.base.validator import assert_status_code
 
 
 @pytest.fixture()
-def test_data_languages():
+def create_delete_test_languages():
     payload = Generator.object(model=Language, exclude="id")
     response = create_languages(json=payload)
     assert_status_code(response=response, expected=201)
-    id_data = response.json().get('id')
+    id_test = response.json().get('id')
     yield response
-    response = delete_languages(id_data=id_data)
+    response = delete_languages(id_data=id_test)
     assert_status_code(response=response, expected=204)
 
+
+@pytest.fixture()
+def create_test_languages():
+    payload = Generator.object(model=Language, exclude="id")
+    response = create_languages(json=payload)
+    assert_status_code(response=response, expected=201)
+    yield response
