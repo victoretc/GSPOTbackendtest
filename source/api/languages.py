@@ -5,9 +5,9 @@ from source.base.client import Requests
 from source.enums.games import Reference
 
 
-@allure.step('Get languages with id "{languages_id}"')
-def get_languages(languages_id: int, auth=tester_auth):
-    url = f'{Reference.LANGUAGES}{languages_id}'
+@allure.step('Get languages with id "{id_data}"')
+def get_languages(id_data: int, auth=tester_auth):
+    url = f'{Reference.LANGUAGES}{id_data}'
     response = Requests.get(url=url, auth=auth)
     return response
 
@@ -30,7 +30,7 @@ def create_languages(json, auth=tester_auth):
 
 @allure.step('Update the language with id "{id_data}"')
 def update_languages(id_data: int, json, auth=tester_auth):
-    url = f'{Reference.LANGUAGES}{id_data}'
+    url = f'{Reference.LANGUAGES}{id_data}/'
     response = Requests.put(url=url, json=json, auth=auth)
     return response
 

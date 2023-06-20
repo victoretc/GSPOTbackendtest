@@ -7,24 +7,26 @@ class Assertion:
 
     def __init__(self, response):
         self.response = response
-        self.json_data = response.json()
         self.status_code = response.status_code
+
+    def get_json(self):
+        return self.response.json()
 
     @allure.step('Assertion json by the model')
     def assert_json_by_model(self, model):
         try:
-            if isinstance(self.json_data, list):
-                for item in self.json_data:
+            if isinstance(self.response.json(), list):
+                for item in self.response.json():
                     model(**item)
             else:
-                model(**self.json_data)
+                model(**self.response.json())
         except ValidationError as e:
             raise AttributeError(f"Could not map received object to pydantic model:\n{e.json()}")
         return self
 
     @allure.step('Assertion of a json key value')
     def assert_json_key_value(self, payload, key):
-        assert self.json_data.get(key) == payload.get(key), GlobalError.INVALID_KEY_VALUE
+        assert self.response.json().get(key) == payload.get(key), GlobalError.INVALID_KEY_VALUE
         return self
 
     @allure.step('Assertion of a status code')
