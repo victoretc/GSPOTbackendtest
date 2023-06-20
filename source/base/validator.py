@@ -25,8 +25,12 @@ class Assertion:
         return self
 
     @allure.step('Assertion of a json key value')
-    def assert_json_key_value(self, payload, key):
-        assert self.response.json().get(key) == payload.get(key), GlobalError.INVALID_KEY_VALUE
+    def assert_json_key_value(self, json, key):
+        assert self.response.json().get(key) == json.get(key), GlobalError.INVALID_KEY_VALUE
+        return self
+
+    def assert_json_equal_json(self, json):
+        assert self.response.json() == json, GlobalError.INVALID_JSON
         return self
 
     @allure.step('Assertion of a status code')
@@ -39,8 +43,12 @@ def assert_json_by_model(response, model):
     return Assertion(response=response).assert_json_by_model(model=model)
 
 
-def assert_json_key_value(response, payload, key):
-    return Assertion(response=response).assert_json_key_value(payload=payload, key=key)
+def assert_json_key_value(response, json, key):
+    return Assertion(response=response).assert_json_key_value(json=json, key=key)
+
+
+def assert_json_equal_json(response, json):
+    return Assertion(response=response).assert_json_equal_json(json=json)
 
 
 def assert_status_code(response, expected):

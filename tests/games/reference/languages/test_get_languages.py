@@ -13,14 +13,14 @@ from source.base.validator import assert_status_code, assert_json_by_model
 @pytest.mark.smoke
 class TestGetLanguages:
 
-    @allure.title("Test languages list")
+    @allure.title('Test languages list')
     @allure.description('Проверка успешного ответа [200] при запросе списка языков.')
     def test_languages_list(self):
         response = get_languages_list()
         assert_status_code(response=response, expected=200)
         assert_json_by_model(response=response, model=Language)
 
-    @allure.title("Test languages read")
+    @allure.title('Test languages read')
     @allure.description('Проверка успешного ответа [200] при запросе языка по ID.')
     def test_languages_read(self):
         response = get_languages(id_data=1)
