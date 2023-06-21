@@ -22,4 +22,4 @@ def create_test_languages():
     payload = Generator.object(model=Language, exclude="id")
     response = create_languages(json=payload)
     assert_status_code(response=response, expected=201)
-    yield response
+    return response
