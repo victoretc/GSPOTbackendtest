@@ -17,7 +17,7 @@ class TestLanguagesCreate:
     @allure.title('Test languages create')
     @allure.description('Проверка успешного ответа [201] при создании языка.')
     def test_languages_create(self, delete_created_data):
-        payload = Generator.object(model=Language, seed=1, exclude='id')
+        payload = Generator.object(model=Language, seed=1)
         response = create_languages(json=payload)
 
         assert_status_code(response=response, expected=201)

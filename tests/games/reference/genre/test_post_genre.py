@@ -17,7 +17,7 @@ class TestGenreCreate:
     @allure.title('Test genre create')
     @allure.description('Проверка успешного ответа [201] при создании жанра')
     def test_genre_create(self, delete_created_data):
-        payload = Generator.object(model=Genre, exclude='id')
+        payload = Generator.object(model=Genre)
         response = create_genre(json=payload)
 
         assert_status_code(response=response, expected=201)
