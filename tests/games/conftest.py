@@ -10,7 +10,7 @@ from source.base.validator import assert_status_code
 
 @pytest.fixture()
 def create_delete_test_languages():
-    payload = Generator.object(model=Language, exclude="id")
+    payload = Generator.object(model=Language)
     response = create_languages(json=payload)
     assert_status_code(response=response, expected=201)
     id_test = response.json().get('id')
@@ -21,7 +21,7 @@ def create_delete_test_languages():
 
 @pytest.fixture()
 def create_test_languages():
-    payload = Generator.object(model=Language, exclude="id")
+    payload = Generator.object(model=Language)
     response = create_languages(json=payload)
     assert_status_code(response=response, expected=201)
     return response
@@ -29,7 +29,7 @@ def create_test_languages():
 
 @pytest.fixture()
 def create_delete_test_genre():
-    payload = Generator.object(model=Genre, exclude="id")
+    payload = Generator.object(model=Genre)
     response = create_genre(json=payload)
     assert_status_code(response=response, expected=201)
     id_test = response.json().get('id')
@@ -40,7 +40,7 @@ def create_delete_test_genre():
 
 @pytest.fixture()
 def create_test_genre():
-    payload = Generator.object(model=Genre, exclude="id")
+    payload = Generator.object(model=Genre)
     response = create_genre(json=payload)
     assert_status_code(response=response, expected=201)
     return response

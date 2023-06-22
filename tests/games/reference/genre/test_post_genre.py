@@ -1,15 +1,15 @@
 import allure
 import pytest
 
-from source.api.genre import create_genre, delete_genre
 from source.base.generator import Generator
-from source.base.validator import assert_json_by_model, assert_json_key_value, assert_status_code
 from source.schemas.genre_schema import Genre
+from source.api.genre import create_genre, delete_genre
+from source.base.validator import assert_json_by_model, assert_json_key_value, assert_status_code
 
 
 @allure.epic('Games')
 @allure.feature('Reference')
-@allure.story('Languages')
+@allure.story('Genre')
 @allure.suite('Test post genre')
 @pytest.mark.smoke
 class TestGenreCreate:
