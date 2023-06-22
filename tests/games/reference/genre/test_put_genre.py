@@ -15,8 +15,8 @@ from source.base.validator import (assert_status_code, assert_json_by_model,
 @pytest.mark.smoke
 class TestGenreUpdate:
 
-    @allure.title('Test genre create')
-    @allure.description('Проверка успешного ответа [201] при создании жанра')
+    @allure.title('Test genre update')
+    @allure.description('Проверка успешного ответа [201] при обновлении жанра')
     def test_genre_update(self, create_delete_test_genre):
         id_test = create_delete_test_genre.json().get('id')
 
