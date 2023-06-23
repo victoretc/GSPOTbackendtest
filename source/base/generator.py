@@ -29,4 +29,12 @@ class Generator:
             else:
                 if key == 'name':
                     data[key] = fake.word()
+                elif key == 'languageName':
+                    data[key] = fake.language_name()
+                elif key == 'interface':
+                    data[key] = fake.boolean()
+                elif key == 'subtitles':
+                    data[key] = fake.boolean()
+                elif key == 'voice':
+                    data[key] = fake.boolean()
         return data
