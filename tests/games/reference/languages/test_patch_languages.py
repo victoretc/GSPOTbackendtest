@@ -20,7 +20,7 @@ class TestLanguagesPartialUpdate:
     def test_languages_partial_update(self, create_delete_test_languages):
         id_test = create_delete_test_languages.json().get('id')
 
-        payload = Generator.object(model=Language, seed=2, include='name')
+        payload = Generator.object(model=Language, seed=2)
         response = update_languages_partly(id_data=id_test, json=payload)
         payload['id'] = id_test
 
