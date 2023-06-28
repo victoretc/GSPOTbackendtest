@@ -9,6 +9,6 @@ class ExpectedJSON(Enum):
     FIELD_CANNOT_CONTAINS_MORE_100 = ['Убедитесь, что это значение содержит не более 100 символов.']
 
     @staticmethod
-    def key_value(json, key, value):
-        json[key] = value
+    def key_value(key, value):
+        json = {key: value}
         return json

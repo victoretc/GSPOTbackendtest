@@ -46,6 +46,6 @@ class TestLanguagesUpdateRegression:
         payload = Generator.object(model=Language, name=value)
         response = update_languages(id_data=id_test, json=payload)
 
-        expected = ExpectedJSON.key_value(json=payload, key='name', value=ExpectedJSON.FIELD_CANNOT_BE_EMPTY.value)
+        expected = ExpectedJSON.key_value(key='name', value=ExpectedJSON.FIELD_CANNOT_BE_EMPTY.value)
         assert_status_code(response=response, expected=400)
         assert_json_equal_json(response=response, json=expected)

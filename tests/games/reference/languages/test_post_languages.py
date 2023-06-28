@@ -49,7 +49,7 @@ class TestLanguagesCreateRegression:
         payload = Generator.object(model=Language, name=value)
         response = create_languages(json=payload)
         if len(value) < 1 or len(value) > 100:
-            expected_json = ExpectedJSON.key_value(json=payload, key='name', value=massage)
+            expected_json = ExpectedJSON.key_value(key='name', value=massage)
             assert_status_code(response=response, expected=expected)
             assert_json_equal_json(response=response, json=expected_json)
         else:
@@ -69,7 +69,7 @@ class TestLanguagesCreateRegression:
         payload = Generator.object(model=Language, name=value)
         response = create_languages(json=payload)
 
-        expected = ExpectedJSON.key_value(json=payload, key='name', value=ExpectedJSON.FIELD_CANNOT_BE_EMPTY.value)
+        expected = ExpectedJSON.key_value(key='name', value=ExpectedJSON.FIELD_CANNOT_BE_EMPTY.value)
         assert_status_code(response=response, expected=400)
         assert_json_equal_json(response=response, json=expected)
 
@@ -81,7 +81,6 @@ class TestLanguagesCreateRegression:
     @allure.description('Проверка ответа [200] при создании нетипичного значения языка')
     @pytest.mark.parametrize("value", [
         " ru", "ru ", "EnGlIsH"
-
     ])
     def test_languages_create_with_atypical_value(self, value, delete_created_data):
         payload = Generator.object(model=Language, name=value)
