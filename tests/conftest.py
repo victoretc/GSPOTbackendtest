@@ -9,3 +9,7 @@ def _delete_created_data(api, id_data):
 @pytest.fixture
 def delete_created_data():
     return _delete_created_data
+
+
+def pytest_make_parametrize_id(config, val):
+    return repr(val)
