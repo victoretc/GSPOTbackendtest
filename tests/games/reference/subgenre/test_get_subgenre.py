@@ -26,4 +26,5 @@ class TestSubgenre:
         id_test = create_delete_test_subgenre.json().get('id')
         response = get_subgenre(id_data=id_test)
         assert_status_code(response=response, expected=200)
+        assert_json_by_model(response=response, model=Subgenre)
         assert_json_key_value(response=response, json=create_delete_test_subgenre.json(), key='id')
