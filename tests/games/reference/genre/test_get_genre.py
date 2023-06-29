@@ -26,4 +26,5 @@ class TestGenre:
         id_test = create_delete_test_genre.json().get('id')
         response = get_genre(id_data=id_test)
         assert_status_code(response=response, expected=200)
+        assert_json_by_model(response=response, model=Genre)
         assert_json_key_value(response=response, json=create_delete_test_genre.json(), key='id')
