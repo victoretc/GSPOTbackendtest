@@ -34,7 +34,7 @@ class Reference(str, Enum):
 class Utils(str, Enum):
     GENRES = f'{BASE_URL}utils/filters/genres/'
     PLATFORMS = f'{BASE_URL}utils/filters/platforms/'
-    PRICES = f'{BASE_URL}utils/filters/prices/'
+    PRICES = f'{BASE_URL}utils/filters/prices'
 
     def __str__(self) -> str:
         return self.value
