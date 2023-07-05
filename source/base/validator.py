@@ -36,7 +36,10 @@ class Assertion:
 
     @allure.step('Assertion of a status code')
     def assert_status_code(self, expected: int):
-        assert self.status_code == expected, GlobalError.WRONG_STATUS_CODE
+        if self.status_code != expected:
+            error_message = f"Status code is different than expected. Expected: {expected}, Actual: {self.status_code}"
+            error_message += f"\nResponse Content: {self.response.text}"
+            raise AssertionError(error_message)
         return self
 
 
