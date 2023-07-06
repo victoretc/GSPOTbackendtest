@@ -1,14 +1,7 @@
-from enum import Enum
 from pydantic import BaseModel
 from typing import List
 
-
-class OperatingSystemEnum(Enum):
-    LINUX = "Linux"
-    WINDOWS = "Windows"
-    MACOS = "MacOS"
-    PS = "PS"
-    XBOX = "XBOX"
+from source.schemas.games.system_requirement import OperatingSystemEnum
 
 
 class OperatingSystem(BaseModel):
