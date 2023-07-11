@@ -26,7 +26,9 @@ class Assertion:
 
     @allure.step('Assertion of a json key value')
     def assert_json_key_value(self, json, key):
-        assert self.response.json().get(key) == json.get(key), GlobalError.INVALID_KEY_VALUE
+        assert self.response.json().get(key) == json.get(key), f'{GlobalError.INVALID_KEY_VALUE}.\n' \
+                                                               f'Expected: {json.get(key)}\n' \
+                                                               f'Actual: {self.response.json().get(key)}'
         return self
 
     @allure.step('Assertion of a json equal json')
