@@ -16,7 +16,7 @@ class TestProductLanguagesCreate:
     @allure.title('Test product languages create')
     @allure.description('Проверка успешного ответа [201] при создании языка продукта.')
     def test_product_languages_create(self, delete_created_data):
-        payload = Generator.object(model=ProductLanguages, seed=1)
+        payload = Generator.object(model=ProductLanguages, seed=111)
         response = create_product_languages(json=payload)
 
         assert_status_code(response=response, expected=201)

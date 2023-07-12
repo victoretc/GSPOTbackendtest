@@ -6,7 +6,7 @@ from source.enums.games import Core
 
 
 @allure.step('Get the system requirement by id "{id_data}"')
-def get_system_requirement(id_data: int, auth=tester_auth):
+def get_system_requirement(id_data: str, auth=tester_auth):
     url = f'{Core.SYSTEM_REQUIREMENT}{id_data}'
     response = Requests.get(url=url, auth=auth)
     return response
@@ -29,21 +29,21 @@ def create_system_requirement(json, auth=tester_auth):
 
 
 @allure.step('Update the system requirement with id "{id_data}"')
-def update_system_requirement(id_data: int, json, auth=tester_auth):
+def update_system_requirement(id_data: str, json, auth=tester_auth):
     url = f'{Core.SYSTEM_REQUIREMENT}{id_data}/'
     response = Requests.put(url=url, json=json, auth=auth)
     return response
 
 
 @allure.step('Update the system requirement partly with id "{id_data}"')
-def update_system_requirement_partly(id_data: int, json, auth=tester_auth):
+def update_system_requirement_partly(id_data: str, json, auth=tester_auth):
     url = f'{Core.SYSTEM_REQUIREMENT}{id_data}/'
     response = Requests.patch(url=url, json=json, auth=auth)
     return response
 
 
 @allure.step('Delete the system requirement with id "{id_data}"')
-def delete_system_requirement(id_data: int, auth=tester_auth):
+def delete_system_requirement(id_data: str, auth=tester_auth):
     url = f'{Core.SYSTEM_REQUIREMENT}{id_data}'
     response = Requests.delete(url=url, auth=auth)
     return response

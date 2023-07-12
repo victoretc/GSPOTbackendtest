@@ -69,13 +69,13 @@ class TestLanguagesCreateRegression:
         payload = Generator.object(model=Language, name=value)
         response = create_languages(json=payload)
 
+        if response.status_code == 201:
+            id_data = response.json().get("id")
+            delete_created_data(api=delete_languages, id_data=id_data)
+
         expected = ExpectedJSON.key_value(key='name', value=ExpectedJSON.FIELD_CANNOT_BE_EMPTY.value)
         assert_status_code(response=response, expected=400)
         assert_json_equal_json(response=response, json=expected)
-
-        if response.status_code == 204:
-            id_data = response.json().get("id")
-            delete_created_data(api=delete_languages, id_data=id_data)
 
     @allure.title('Test languages create with atypical value')
     @allure.description('Проверка ответа [200] при создании нетипичного значения языка')

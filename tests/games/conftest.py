@@ -1,10 +1,12 @@
 import pytest
 
+from source.api.games.system_requirement import create_system_requirement, delete_system_requirement
 from source.api.genre import create_genre, delete_genre
 from source.api.languages import create_languages, delete_languages
 from source.api.product_languages import create_product_languages, delete_product_languages
 from source.api.subgenre import create_subgenre, delete_subgenre
 from source.base.generator import Generator
+from source.schemas.games.system_requirement import SystemRequirement
 from source.schemas.genre_schema import Genre
 from source.schemas.laguage_schema import Language
 from source.base.validator import assert_status_code
@@ -84,5 +86,24 @@ def create_delete_test_subgenre():
 def create_test_subgenre():
     payload = Generator.object(model=Subgenre)
     response = create_subgenre(json=payload)
+    assert_status_code(response=response, expected=201)
+    return response
+
+
+@pytest.fixture()
+def create_delete_test_system_requirement():
+    payload = Generator.object(model=SystemRequirement)
+    response = create_system_requirement(json=payload)
+    assert_status_code(response=response, expected=201)
+    id_test = response.json().get('id')
+    yield response
+    response = delete_system_requirement(id_data=id_test)
+    assert_status_code(response=response, expected=204)
+
+
+@pytest.fixture()
+def create_test_system_requirement():
+    payload = Generator.object(model=SystemRequirement)
+    response = create_system_requirement(json=payload)
     assert_status_code(response=response, expected=201)
     return response
