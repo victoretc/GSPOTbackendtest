@@ -26,21 +26,23 @@ class Assertion:
 
     @allure.step('Assertion of a json key value')
     def assert_json_key_value(self, json, key):
-        assert self.response.json().get(key) == json.get(key), GlobalError.INVALID_KEY_VALUE
+        assert self.response.json().get(key) == json.get(key), f'{GlobalError.INVALID_KEY_VALUE}.\n' \
+                                                               f'Expected: {json.get(key)}\n' \
+                                                               f'Actual: {self.response.json().get(key)}' \
+                                                               f'Response: {self.response.json()}'
         return self
 
     @allure.step('Assertion of a json equal json')
     def assert_json_equal_json(self, json):
-        assert self.response.json() == json, GlobalError.INVALID_JSON
+        assert self.response.json() == json, f'{GlobalError.INVALID_JSON}.\n'\
+                                             f'Response: {self.response.json()}'
         return self
 
     @allure.step('Assertion of a status code')
     def assert_status_code(self, expected: int):
-        if self.status_code != expected:
-            error_message = str(GlobalError.WRONG_STATUS_CODE)
-            error_message += f". Expected: {expected}, Actual: {self.status_code}"
-            error_message += f"\nResponse Content: {self.response.text}"
-            raise AssertionError(error_message)
+        assert self.status_code == expected, f'{GlobalError.WRONG_STATUS_CODE}.\n' \
+                                             f'Expected: {expected}\n'\
+                                             f'Actual: {self.status_code}\n'
         return self
 
 

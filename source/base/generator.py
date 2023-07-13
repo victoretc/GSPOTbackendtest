@@ -37,4 +37,14 @@ class Generator:
                     data[key] = fake.boolean()
                 elif key == 'voice':
                     data[key] = fake.boolean()
+                elif key == 'operatingSystem':
+                    data[key] = 'WINDOWS'
+                elif key == 'deviceProcessor':
+                    data[key] = fake.word()
+                elif key == 'deviceStorage':
+                    data[key] = fake.word()
+                elif key == 'deviceGraphics':
+                    data[key] = fake.word()
+                elif key == 'typeRequirements':
+                    data[key] = 'RECOMMEND'
         return data
